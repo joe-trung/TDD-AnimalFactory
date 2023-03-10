@@ -1,8 +1,11 @@
 package rocks.zipcodewilmington;
 
+import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Cat;
 import rocks.zipcodewilmington.animals.Dog;
 import rocks.zipcodewilmington.animals.animal_creation.AnimalFactory;
+import rocks.zipcodewilmington.animals.animal_storage.CatHouse;
 import rocks.zipcodewilmington.animals.animal_storage.DogHouse;
 
 import java.util.Date;
@@ -18,17 +21,64 @@ public class DogHouseTest {
     // TODO - Create tests for `Integer getNumberOfDogs()`
 
     @Test
-    public void testGetNumberOfDogs() {
-        // Given (some
-        String name = "Milo";
-        Date birthDate = new Date();
-        Dog animal = AnimalFactory.createDog(name, birthDate);
+    public void getNumberOfDogsTest() {
         DogHouse.clear();
+        int expectedNumberOfDogs = 1;
 
-        // When
-        DogHouse.add(animal);
+        DogHouse.add(AnimalFactory.createDog("Jimmy", new Date()));
+        int actualNumberOfDogs = DogHouse.getNumberOfDogs();
 
-        // Then
-        DogHouse.getNumberOfDogs();
+        Assert.assertEquals(expectedNumberOfDogs,actualNumberOfDogs);
     }
+
+    @Test
+    public void addTest() {
+        DogHouse.clear();;
+        Dog dog = AnimalFactory.createDog("Chilli", new Date());
+        String actualDogName = dog.getName();
+
+        Assert.assertTrue(!actualDogName.equals(""));
+
+    }
+
+    @Test
+    public void removeByNameTest() {
+        DogHouse.clear();
+        int expectedNumberOfDog = 0;
+
+        Dog dog = AnimalFactory.createDog("Dave", new Date());
+        DogHouse.add(dog);
+
+        DogHouse.remove(dog);
+        int actualNumberOfDog = DogHouse.getNumberOfDogs();
+
+        Assert.assertEquals(expectedNumberOfDog,actualNumberOfDog);
+    }
+
+    @Test
+    public void removeTest() {
+        DogHouse.clear();
+        int expectedNumberOfDog = 0;
+
+        Dog dog = AnimalFactory.createDog("Jake", new Date());
+        int id = 0;
+        DogHouse.add(dog);
+
+        DogHouse.remove(id);
+        int actualNumberOfDog = DogHouse.getNumberOfDogs();
+
+        Assert.assertEquals(expectedNumberOfDog,actualNumberOfDog);
+    }
+
+    @Test
+    public void getDogByIdTest() {
+        DogHouse.clear();
+        Dog expectedDog = AnimalFactory.createDog("Lala", new Date());
+        int id = expectedDog.getId();
+        DogHouse.add(expectedDog);
+        Dog actualDog = DogHouse.getDogById(id);
+        Assert.assertTrue(expectedDog.equals(actualDog));
+    }
+
+
 }
