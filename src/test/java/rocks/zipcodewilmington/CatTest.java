@@ -93,16 +93,16 @@ public class CatTest {
         Assert.assertEquals(expected,actual);
     }
 
-//    @Test
-//    public void getIdTest() {
-//        // Given
-//        Cat cat = new Cat(null, null, null);
-//        int expected = 11;
-//        //When
-//        int actual = ;
-//        //Then
-//        Assert.assertEquals(expected,actual);
-//    }
+    @Test
+    public void getIdTest() {
+        // Given
+        Cat cat = new Cat(null, null, 11);
+        int expected = 11;
+        //When
+        int actual = cat.getId();
+        //Then
+        Assert.assertEquals(expected,actual);
+    }
 
     @Test
     public void animalInheritantTest() {

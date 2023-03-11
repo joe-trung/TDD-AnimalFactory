@@ -91,16 +91,16 @@ public class DogTest {
         Assert.assertEquals(expected,actual);
     }
 
-//    @Test
-//    public void getIdTest() {
-//        // Given
-//        Dog dog = new Dog(null,null,null);
-//        int expected = 11;
-//        //When
-//        int actual = dog.getId();
-//        //Then
-//        Assert.assertEquals(expected,actual);
-//    }
+    @Test
+    public void getIdTest() {
+        // Given
+        Dog dog = new Dog(null,null,11);
+        int expected = 11;
+        //When
+        int actual = dog.getId();
+        //Then
+        Assert.assertEquals(expected,actual);
+    }
 
     @Test
     public void animalInheritantTest() {
